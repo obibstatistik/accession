@@ -2,6 +2,7 @@ library(foreach)
 library(shiny)
 library(shinydashboard)
 library(shinyjs)
+library(plotly)
 
 dashboardPage(
   skin = "blue",
@@ -22,13 +23,39 @@ dashboardPage(
     tabItems(
       
       tabItem(tabName = "dashboards",
+        box(
+          width = 12,
+          h3("Overskrift"),
+          "Beskrivelse af hvad man ser på graferne"
+        ),
+        fluidRow(
+          column(3,
+            box(
+              width = 12,
+              h4("Filtre"),
+              fluidRow(
+                column(12,        
+                  "Periode",
+                  "Kundenummer"
+                )
+              )  
+            )
+          ),
+          column(9,
               box(width = 12,
-                  DT::dataTableOutput("table")
-              )
+                  plotlyOutput("plot")
+              )#,
+              #box(width = 12,
+                #DT::dataTableOutput("table")
+              #)
+          )
+        )  
       ),
       tabItem(tabName = "dokumentation",
               box(width = 12,
-                  "test"
+                  "hvor meget leveres til rette tid",
+                  "dd"
+                  
               )
       )
     )
